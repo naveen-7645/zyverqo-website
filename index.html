@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZYVERQO helps businesses understand sales, inventory and business performance through Excel reporting, MIS reports and Power BI dashboards.">
+<meta name="theme-color" content="#0B1F3A">
+<title>ZYVERQO | Turning Data Into Decisions</title>
+<style>
+:root{--navy:#0B1F3A;--teal:#00C2B8;--teal-dark:#00AFA5;--muted:#52677D;--border:#DCE5ED;--surface:#F3F7FA;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--surface);color:var(--navy);line-height:1.6}
+img{max-width:100%}
+.container{width:min(1200px,84%);margin:auto}
+header{background:var(--white);padding:18px 8%;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.logo{width:180px;height:auto;display:block}
+nav{display:flex;align-items:center;flex-wrap:wrap;gap:25px}
+nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:15px}
+nav a:hover,.contact a.email:hover{color:var(--teal-dark)}
+.hero{max-width:1400px;margin:auto;padding:90px 8%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px}
+.hero-content{max-width:560px}
+.hero h1{font-size:clamp(38px,4vw,54px);line-height:1.12;letter-spacing:-1.2px;margin-bottom:22px}
+.hero p{font-size:18px;color:var(--muted);margin-bottom:25px}
+.button{display:inline-block;background:var(--teal);color:var(--navy);padding:13px 25px;border-radius:7px;text-decoration:none;font-weight:bold;transition:.2s}
+.button:hover{background:#00b3aa;transform:translateY(-1px)}
+.tagline{margin-top:18px;font-size:14px!important}
+.dashboard{background:var(--white);padding:26px;border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 25px rgba(11,31,58,.06)}
+.dashboard h3{font-size:16px;margin-bottom:18px}
+.dashboard-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.dashboard-stats div{background:var(--surface);padding:13px 10px;border-radius:8px;min-width:0}
+.dashboard-stats small{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.dashboard-stats strong{font-size:19px}
+.dashboard h4{margin-bottom:14px}
+.line-chart{width:100%;height:auto;display:block;background:var(--surface);border-radius:8px;padding:10px}
+.demo-label,.sample-label{font-size:10px;color:var(--muted);margin-top:12px}
+.services{background:var(--white);padding:70px 8%}
+.services h2{font-size:32px;margin-bottom:30px}
+.service-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.service-card{
+    padding:0;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--white);
+    overflow:hidden;
+}
+
+.service-image {
+    width: 100%;
+    height: 250px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    object-position: center;
+    background: var(--white);
+}
+
+.service-card h3{
+    font-size:19px;
+    margin:18px 20px 12px;
+}
+
+.service-card p{
+    margin:0 20px 20px;
+}
+.service-card p,.portfolio-card>p,.section-heading>p:last-child,.about p,.contact p{color:var(--muted)}
+.portfolio{background:var(--white);padding:64px 8% 52px}
+.section-heading{max-width:none;margin:0 0 28px}
+.eyebrow{color:var(--teal-dark);font-size:13px;font-weight:bold;margin-bottom:12px}
+.section-heading h2{font-size:36px;line-height:1.2;margin-bottom:15px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.portfolio-card{border:1px solid var(--border);border-radius:12px;padding:18px;background:var(--white);display:flex;flex-direction:column;min-width:0}
+.portfolio-card h3{font-size:19px;line-height:1.35;min-height:52px;margin-bottom:12px}
+.portfolio-preview{background:var(--surface);padding:14px;border-radius:9px;margin-bottom:16px;min-height:250px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto 110px auto;gap:10px;align-content:start}
+.metric{min-width:0}
+.metric small,.metric strong{display:block;overflow-wrap:anywhere}
+.metric small{color:var(--muted);font-size:11px;margin-bottom:3px}
+.metric strong{font-size:16px}
+.mini-chart,.inventory-bars,.profit-summary,.sample-label{grid-column:1/-1}
+.mini-chart{height:110px;display:flex;align-items:end;gap:10px;padding:10px;background:var(--white);border-radius:6px}
+.mini-chart span{flex:1;background:var(--teal);border-radius:3px 3px 0 0}
+.sample-label{margin-top:0;align-self:end}
+.portfolio-card>p{font-size:14px;margin-top:auto}
+.inventory-bars{display:grid;gap:9px;align-content:center}
+.inventory-bars div{height:12px;background:var(--white);border-radius:5px;overflow:hidden}
+.inventory-bars span{display:block;height:100%;background:var(--teal);border-radius:5px}
+.profit-summary{background:var(--white);border-radius:50%;width:110px;height:110px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:center}
+.profit-summary strong{font-size:25px;color:var(--teal-dark)}
+.profit-summary span{font-size:11px;color:var(--muted)}
+.about{background:var(--surface);padding:70px 8%;text-align:center}
+.about h2{font-size:32px;margin-bottom:16px}
+.about p{max-width:850px;margin:auto}
+.contact{background:var(--surface);padding:70px 8%;text-align:center}
+.contact h2{margin-bottom:8px}
+.contact .button{margin:22px 0 8px}
+.contact a.email{color:var(--navy);text-decoration:none}
+footer{background:var(--navy);color:var(--white);padding:25px;text-align:center}
+footer p+p{margin-top:4px}
+@media(max-width:900px){
+ .hero{gap:30px;padding-top:70px;padding-bottom:70px}
+ .hero h1{font-size:40px}
+ .portfolio-grid,.service-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ header{flex-direction:column;gap:14px;padding:18px 6%}
+ .logo{width:160px}
+ nav{justify-content:center;gap:16px}
+ nav a{font-size:14px}
+ .hero{grid-template-columns:1fr;padding:55px 7%;gap:32px}
+ .hero h1{font-size:36px}
+ .hero p{font-size:16px}
+ .dashboard{padding:18px}
+ .services,.portfolio,.about,.contact{padding:55px 7%}
+ .service-list,.portfolio-grid{grid-template-columns:1fr}
+ .services h2,.about h2{font-size:29px}
+ .section-heading h2{font-size:30px}
+ .portfolio-card h3{min-height:0}
+ .portfolio-preview{min-height:235px}
+}
+@media(max-width:380px){
+ .dashboard-stats{gap:6px}
+ .dashboard-stats div{padding:10px 7px}
+ .dashboard-stats strong{font-size:16px}
+ .metric strong{font-size:14px}
+ nav{gap:11px}
+}
+</style>
+</head>
+<body>
+<header>
+ <img src="zyverqo-logo.png" alt="ZYVERQO Logo" class="logo">
+ <nav aria-label="Main navigation">
+  <a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About</a><a href="#contact">Contact</a>
+ </nav>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="hero-content">
+  <h1>Turn Your Business Data Into Smarter Decisions.</h1>
+  <p>We help businesses understand their sales, inventory and business performance through Excel reporting, MIS reports and Power BI dashboards.</p>
+  <a href="mailto:zyverqo.business@gmail.com?subject=Free%20Consultation%20-%20ZYVERQO" class="button">Get a Free Consultation</a>
+  <p class="tagline">Turning Data Into Decisions.</p>
+ </div>
+ <div class="dashboard">
+  <h3>ZYVERQO / Retail Performance</h3>
+  <div class="dashboard-stats">
+   <div><small>Revenue</small><strong>₹8.4L</strong></div>
+   <div><small>Orders</small><strong>1,248</strong></div>
+   <div><small>Stock Units</small><strong>3,620</strong></div>
+  </div>
+  <h4>Monthly Sales Overview</h4>
+  <svg class="line-chart" viewBox="0 0 600 190" role="img" aria-label="Illustrative monthly sales line chart from January to June">
+   <defs>
+    <linearGradient id="salesArea" x1="0" y1="0" x2="0" y2="1">
+     <stop offset="0%" stop-color="#00C2B8" stop-opacity="0.28"/>
+     <stop offset="100%" stop-color="#00C2B8" stop-opacity="0.02"/>
+    </linearGradient>
+   </defs>
+   <g stroke="#DCE5ED" stroke-width="1">
+    <line x1="38" y1="25" x2="570" y2="25"/><line x1="38" y1="65" x2="570" y2="65"/>
+    <line x1="38" y1="105" x2="570" y2="105"/><line x1="38" y1="145" x2="570" y2="145"/>
+   </g>
+   <path d="M45 125 L145 103 L245 113 L345 68 L445 82 L555 35 L555 145 L45 145 Z" fill="url(#salesArea)"/>
+   <path d="M45 125 L145 103 L245 113 L345 68 L445 82 L555 35" fill="none" stroke="#00AFA5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+   <g fill="#fff" stroke="#00AFA5" stroke-width="4">
+    <circle cx="45" cy="125" r="6"/><circle cx="145" cy="103" r="6"/><circle cx="245" cy="113" r="6"/>
+    <circle cx="345" cy="68" r="6"/><circle cx="445" cy="82" r="6"/><circle cx="555" cy="35" r="6"/>
+   </g>
+   <g fill="#52677D" font-size="13" text-anchor="middle">
+    <text x="45" y="172">Jan</text><text x="145" y="172">Feb</text><text x="245" y="172">Mar</text>
+    <text x="345" y="172">Apr</text><text x="445" y="172">May</text><text x="555" y="172">Jun</text>
+   </g>
+  </svg>
+  <p class="demo-label">DEMONSTRATION · SAMPLE DATA</p>
+ </div>
+</section>
+<section class="services" id="services">
+ <div class="container">
+  <h2>Our Services</h2>
+  <div class="service-list">
+   <article class="service-card"><img class="service-image" src="images/excel-reporting.png" alt="Excel data cleaning and reporting example"><h3>Excel Data Cleaning &amp; Reporting</h3><p>Transform messy spreadsheets into structured and useful reports.</p></article>
+   <article class="service-card"><img class="service-image" src="images/sales-inventory-mis.png" alt="Sales and inventory MIS dashboard example"><h3>Sales &amp; Inventory MIS Reports</h3><p>Monitor sales, stock movement and inventory performance.</p></article>
+   <article class="service-card"><img class="service-image" src="images/power-bi-dashboard.png" alt="Power BI business performance dashboard example"><h3>Power BI Dashboards</h3><p>Understand business performance through interactive dashboards.</p></article>
+  </div>
+ </div>
+</section>
+<section class="portfolio" id="portfolio">
+ <div class="container">
+  <div class="section-heading">
+   <p class="eyebrow">DEMONSTRATION PORTFOLIO</p>
+   <h2>A clearer view of what's possible.</h2>
+   <p>Explore how business data can become useful insights.</p>
+  </div>
+  <div class="portfolio-grid">
+   <article class="portfolio-card">
+    <h3>Retail Performance Overview</h3>
+    <div class="portfolio-preview">
+     <div class="metric"><small>Revenue</small><strong>₹6.8L</strong></div>
+     <div class="metric"><small>Growth</small><strong>+12.5%</strong></div>
+     <div class="metric"><small>Top Category</small><strong>Apparel</strong></div>
+     <div class="mini-chart" aria-label="Illustrative retail revenue chart">
+      <span style="height:35%"></span><span style="height:55%"></span><span style="height:45%"></span><span style="height:75%"></span><span style="height:65%"></span><span style="height:90%"></span>
+     </div>
+     <p class="sample-label">DEMO SAMPLE DATA · NOT CLIENT RESULTS</p>
+    </div>
+    <p>Explore sales trends and category performance in one focused view.</p>
+   </article>
+   <article class="portfolio-card">
+    <h3>Sales &amp; Inventory Reporting</h3>
+    <div class="portfolio-preview">
+     <div class="metric"><small>Stock Units</small><strong>2,460</strong></div>
+     <div class="metric"><small>Units Sold</small><strong>735</strong></div>
+     <div class="metric"><small>Low Stock</small><strong>8 SKUs</strong></div>
+     <div class="inventory-bars" aria-label="Illustrative inventory levels">
+      <div><span style="width:90%"></span></div><div><span style="width:65%"></span></div><div><span style="width:45%"></span></div><div><span style="width:20%"></span></div>
+     </div>
+     <p class="sample-label">DEMO SAMPLE DATA · NOT CLIENT RESULTS</p>
+    </div>
+    <p>Follow stock movement, sales activity and replenishment needs.</p>
+   </article>
+   <article class="portfolio-card">
+    <h3>Business Decision Dashboard</h3>
+    <div class="portfolio-preview">
+     <div class="metric"><small>Revenue</small><strong>₹12.5L</strong></div>
+     <div class="metric"><small>Expenses</small><strong>₹2.1L</strong></div>
+     <div class="metric"><small>Gross Profit</small><strong>₹4.5L</strong></div>
+     <div class="profit-summary"><strong>36%</strong><span>Gross Margin</span></div>
+     <p class="sample-label">DEMO SAMPLE DATA · NOT CLIENT RESULTS</p>
+    </div>
+    <p>Bring essential business KPIs together for a straightforward overview.</p>
+   </article>
+  </div>
+ </div>
+</section>
+<section class="about" id="about">
+ <div class="container">
+  <h2>Why Choose ZYVERQO?</h2>
+  <p>ZYVERQO is a data analytics and business reporting service focused on making everyday business information clear, useful and easier to act on. We turn scattered spreadsheets into organised reports and practical dashboards.</p>
+ </div>
+</section>
+<section class="contact" id="contact">
+ <div class="container">
+  <h2>Let's Talk Data</h2>
+  <p>Have a business reporting requirement? Contact us.</p>
+  <a href="mailto:zyverqo.business@gmail.com?subject=ZYVERQO%20Service%20Enquiry" class="button">Send an Enquiry</a>
+  <p><a class="email" href="mailto:zyverqo.business@gmail.com">zyverqo.business@gmail.com</a></p>
+ </div>
+</section>
+</main>
+<footer>
+ <p>ZYVERQO — Turning Data Into Decisions.</p>
+ <p>© 2026 ZYVERQO. All rights reserved.</p>
+</footer>
+</body>
+</html>
